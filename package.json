@@ -1,0 +1,22 @@
+{
+  "name": "vasion-demo",
+  "version": "1.0.0",
+  "description": "Test Automation Framework for SauceLabs.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacobmjones17/Vasion-Demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacobmjones17/Vasion-Demo/issues"
+  },
+  "homepage": "https://github.com/jacobmjones17/Vasion-Demo#readme",
+  "dependencies": {
+    "selenium-webdriver": "^4.4.0"
+  }
+}
