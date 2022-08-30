@@ -17,9 +17,7 @@
   },
   "homepage": "https://github.com/jacobmjones17/Vasion-Demo#readme",
   "dependencies": {
+    "chromedriver": "^101.0.0",
     "selenium-webdriver": "^4.4.0"
-  },
-  "devDependencies": {
-    "chromedriver": "^104.0.0"
   }
 }
