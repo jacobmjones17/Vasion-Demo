@@ -20,15 +20,15 @@ async function secondLogin() {
     // Input Username
     
     const promise = driver.getCurrentUrl().then(function(url){
-        console.error("You're account has been blocked! Try new credentials")
+        console.error("\x1B[31mUsername not accepted!")
         return url
     })
  
-     const result = await promise
+    const result = await promise
  
-     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
+    assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
  
-     await driver.quit()
+    await driver.quit()
 }
 
 secondLogin();

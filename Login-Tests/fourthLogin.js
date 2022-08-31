@@ -1,4 +1,4 @@
-const {Builder, By, Key, WebElement} = require ("selenium-webdriver");
+const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
 async function fourthLogin() {
@@ -11,13 +11,13 @@ async function fourthLogin() {
     
     // enter username & password
     userName.clear();
-    await userName.sendKeys("problem_user")
+    await userName.sendKeys("performance_glitch_user")
     
     await password.sendKeys("secret_sauce", Key.RETURN)
 
     // get current URL
     const promise = driver.getCurrentUrl().then(function(url){
-        console.log("Oh no! Something is wrong!")
+        console.warn("\x1B[32mRan Successfully. \x1B[31mTook Longer than expected!")
         return url
     })
  

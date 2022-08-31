@@ -3,16 +3,13 @@ const assert = require ("assert");
 
 async function firstLogin() {
     const driver = await new Builder().forBrowser("chrome").build()
-    const userName = driver.findElement(By.id("user-name"));
-    const password = driver.findElement(By.id("password"));
 
     // open Saucedemo.com
-    await driver.get("https://www.saucedemo.com/");
+    await driver.get("https://www.saucedemo.com/inventory.html");
     
     userName.clear();
-    await userName.sendKeys("standard_user")
     
-    await password.sendKeys("secret_sauce", Key.RETURN)
+    await driver.findElement(By.className("inventory_item")).click()
 
     // Input Username
     
@@ -23,7 +20,7 @@ async function firstLogin() {
  
      const result = await promise
  
-     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
+     assert.strictEqual(result, "https://www.saucedemo.com/inventory-item.html?id=4")
  
      await driver.quit()
 }

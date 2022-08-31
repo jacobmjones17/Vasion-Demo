@@ -1,4 +1,4 @@
-const {Builder, By, Key, WebElement} = require ("selenium-webdriver");
+const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
 async function fourthLogin() {
@@ -17,16 +17,16 @@ async function fourthLogin() {
 
     // get current URL
     const promise = driver.getCurrentUrl().then(function(url){
-        console.log("Oh no! Something is wrong!")
+        console.log("\x1B[31mWhat's wrong with the pictures!?")
         return url
     })
  
      const result = await promise
  
-     // Expect current URL to be inventory page
-     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
- 
-     await driver.quit()
+    // Expect current URL to be inventory page
+     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
+
+    await driver.quit()
 }
 
 fourthLogin();
