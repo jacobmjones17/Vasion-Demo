@@ -44,7 +44,7 @@ async function firstLogin() {
     //Actual vs. Expectation URL for item
     assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4")
  
-    // await driver.quit()
+    await driver.quit()
 }
 
 firstLogin()
