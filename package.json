@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/jacobmjones17/Vasion-Demo#readme",
   "dependencies": {
+    "asserts": "^4.0.2",
+    "chai": "^4.3.6",
     "chromedriver": "^101.0.0",
     "selenium-webdriver": "^4.4.0"
   }
