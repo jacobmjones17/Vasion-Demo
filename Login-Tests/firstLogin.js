@@ -1,8 +1,5 @@
 const {Builder, By, Key, WebElement} = require ("selenium-webdriver");
 const assert = require ("assert");
-const chai = require ("chai");
-const { Assertion } = require("chai");
-const expect = require ("chai").expect;
 
 async function firstLogin() {
     const driver = await new Builder().forBrowser("chrome").build()
