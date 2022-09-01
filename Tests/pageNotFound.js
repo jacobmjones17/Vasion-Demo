@@ -1,5 +1,7 @@
 /* This test is expected to pass. The user logins in, and tries to learn more about the owner of the company by clicking on the hamburger at the top left, then click on the about page. Test is supposed to take them to their main website, but it says "PAGE NOT FOUND" */
 
+/* I did not have the resources to learn how to tell selenium make a hidden item, unhidden so that it can click on it. */
+
 
 // const {Builder, By, Key} = require ("selenium-webdriver");
 // const assert = require ("assert");
