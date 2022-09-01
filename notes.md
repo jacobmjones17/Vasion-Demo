@@ -1,3 +1,5 @@
+BUG REPORTS:
+
 loginDelay Test:
 1. Sign in using
     username: performance_glitch_user
@@ -90,3 +92,14 @@ informationForm Test:
 - Epxected Result: Expect zip/postal form to accept numbers and not letters
 - Actual Result: Allows you to use a nonexistent zip/code by using letters to checkout.
 Severity: Priority (If the user does not get their product, then the company loses business. They cannot receive their items if they do not have a valid zipcode.)
+
+quantity Test:
+1. Sign in using
+    username: stadard_user
+    password: secret_sauce
+2. Click "Add to Cart" for any item
+3. Click on Shopping Cart
+4. Change QTY to 2
+- Expected Result: Expected to be able buy multiple of an item
+- Actual Result: User cannnot add two of the same item into the cart.
+Severity: Priority (If the user needs to buy all of their kids backpacks, they can only order one at a time. This may even cause them to buy a backpack elsewhere. This costs the company business and money.)
