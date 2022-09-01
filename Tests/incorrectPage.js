@@ -30,4 +30,4 @@ async function incorrectPage() {
 
 }
 
-inccorectPage();
+incorrectPage();
