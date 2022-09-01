@@ -28,7 +28,7 @@ async function fourthLogin() {
     // Expect current URL to be inventory page
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
  
-    // await driver.quit()
+    await driver.quit()
 }
 
 fourthLogin();
