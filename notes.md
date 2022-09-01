@@ -63,3 +63,30 @@ formNotWorkingProperly Test:
 - Expected Result: User should be able to fill out all their information and submit it.
 - Actual Result: User cannot fill out their last name. When user clicks on Last name form, it replaces their first name with the last letter they typed. This causes for them not to purchase an item because their information was not filled out correctly.
 Severity: Priority (If user cannot fill out their informtaion, then they cannot purchase their items. That means the owner of the website will lose money.)
+
+
+checkOutWithNoItems Test:
+1. Sign in using one of these two usernames
+    username: standard_user | performance_glitch_user (any one of these)
+    password: secret_sauce
+2. Click on shopping cart
+3. Click checkout button
+4. Fill out each form information
+5. Click Finish Button
+- Expected Result: Expected to not let the user checkout with 0 items in their shopping cart
+- Actual Result: Allows you to checkout with nothing in your cart
+Severity: Minor (While they aren't supposed to be able to check out with 0 items, it does not cause the customer to pay for 0 items so it will not lose customers for malpayment.)
+
+
+informationForm Test: 
+1. Sign in using one of these two usernames
+    username: standard_user | performance_glitch_user (any one of these)
+    password: secret_sauce
+2. Click on shopping cart
+3. Click checkout button
+4. Type your first name and last name, in their respective form
+5. Type letters inside of the zip/postal code form.
+6. Click Continue
+- Epxected Result: Expect zip/postal form to accept numbers and not letters
+- Actual Result: Allows you to use a nonexistent zip/code by using letters to checkout.
+Severity: Priority (If the user does not get their product, then the company loses business. They cannot receive their items if they do not have a valid zipcode.)
