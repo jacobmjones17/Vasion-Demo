@@ -5,7 +5,7 @@ const assert = require("assert");
 
 async function unfinishedCheckOut() {
 
-    // Expect to sign in
+    // Expect Test to Sign In
     const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
@@ -28,7 +28,7 @@ async function unfinishedCheckOut() {
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
 
-    // Expect to take you to item
+    // Expect to load item once clicked
     await driver.findElement(By.id("item_4_img_link")).click();
 
 
@@ -45,7 +45,6 @@ async function unfinishedCheckOut() {
 
 
     // Expect to navigate to shopping cart and checkout
-
     await driver.findElement(By.id("shopping_cart_container")).click();
 
     await driver.findElement(By.id("checkout")).click();

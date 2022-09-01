@@ -72,7 +72,7 @@ async function firstLogin() {
     assert.strictEqual(checkOutResult, "https://www.saucedemo.com/checkout-complete.html")
 
 
-    // await driver.quit()
+    await driver.quit()
 }
 
 firstLogin()
