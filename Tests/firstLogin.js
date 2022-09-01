@@ -61,7 +61,6 @@ async function firstLogin() {
     await driver.findElement(By.id("finish")).click();
 
 
-    // Exit Page
     await driver.quit()
 }
 

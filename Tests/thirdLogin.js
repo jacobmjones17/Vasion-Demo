@@ -4,7 +4,7 @@ const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
 async function thirdLogin() {
-    const driver = await new Builder().forBrowser("chrome").build()
+    const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
@@ -13,26 +13,27 @@ async function thirdLogin() {
     
     // enter username & password
     userName.clear();
-    await userName.sendKeys("problem_user")
+    await userName.sendKeys("problem_user");
     
-    await password.sendKeys("secret_sauce", Key.RETURN)
+    await password.sendKeys("secret_sauce", Key.RETURN);
 
     // get current URL
     const promise = driver.getCurrentUrl().then(function(url){
         console.log("\x1B[31mWhat's wrong with the pictures!?")
         return url
-    })
+    });
  
-    const result = await promise
+    const result = await promise;
  
     // Expect current URL to be inventory page
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
-    const img = driver.findElement(By.xpath("//*[@id='item_4_img_link']/img"))
+    const img = driver.findElement(By.xpath("//*[@id='item_4_img_link']/img"));
     const src = await img.getAttribute("src");
 
-    console.log(src)
-    assert.strictEqual(src, "https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg")
-}
+    assert.strictEqual(src, "https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg");
+
+    await driver.quit();
+};
 
 thirdLogin();

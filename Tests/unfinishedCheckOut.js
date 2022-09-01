@@ -6,7 +6,7 @@ const assert = require("assert");
 async function unfinishedCheckOut() {
 
     // First Login Test
-    const driver = await new Builder().forBrowser("chrome").build()
+    const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
@@ -16,17 +16,18 @@ async function unfinishedCheckOut() {
 
 
     userName.clear();
-    await userName.sendKeys("standard_user")
-    await password.sendKeys("secret_sauce", Key.RETURN)
+    await userName.sendKeys("standard_user");
+    await password.sendKeys("secret_sauce", Key.RETURN);
 
 
     const promise = driver.getCurrentUrl().then(function (url) {
         console.log("\x1B[32mCongratulations, you officially logged in!")
         return url
-    })
-    const result = await promise
+    });
 
-    assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
+    const result = await promise;
+
+    assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
 
     // Navigation to item test
@@ -36,11 +37,11 @@ async function unfinishedCheckOut() {
     const currentUrl = driver.getCurrentUrl().then(function (url) {
         console.log("\x1B[32mThis is the item you clicked on!")
         return url
-    })
+    });
 
-    const pageResult = await currentUrl
+    const pageResult = await currentUrl;
 
-    assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4")
+    assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4");
 
     await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
@@ -58,15 +59,14 @@ async function unfinishedCheckOut() {
     const checkoutUrl = driver.getCurrentUrl().then(function (url) {
         console.warn("\x1B[31mError! Form is missing information.")
         return url
-    })
+    });
 
-    const checkoutResult = await checkoutUrl
+    const checkoutResult = await checkoutUrl;
 
-    assert.strictEqual(checkoutResult, "https://www.saucedemo.com/checkout-step-two.html")
+    assert.strictEqual(checkoutResult, "https://www.saucedemo.com/checkout-step-two.html");
 
 
-    // Exit Page
-    // await driver.quit()
-}
+    await driver.quit();
+};
 
-unfinishedCheckOut()
+unfinishedCheckOut();

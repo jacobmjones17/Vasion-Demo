@@ -1,3 +1,5 @@
+/* This test fails. It tests to click on the first item and to make sure it goes to that item's page. The test fails because when you click on one item, it goes to a different item's page. */
+
 const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
@@ -11,22 +13,22 @@ async function incorrectPage() {
     
     // enter username & password
     userName.clear();
-    await userName.sendKeys("problem_user")
+    await userName.sendKeys("problem_user");
     
-    await password.sendKeys("secret_sauce", Key.RETURN)
+    await password.sendKeys("secret_sauce", Key.RETURN);
 
-    await driver.findElement(By.id("item_4_img_link")).click()
+    await driver.findElement(By.id("item_4_img_link")).click();
 
     const currentUrl = driver.getCurrentUrl().then(function (url) {
         console.log("\x1B[31mWent to the wrong item!")
         return url
-    })
+    });
 
-    const pageResult = await currentUrl
+    const pageResult = await currentUrl;
 
-    assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4")
+    assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4");
 
-    driver.quit();
+    await driver.quit();
 
 }
 

@@ -4,30 +4,31 @@ const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
 async function secondLogin() {
-    const driver = await new Builder().forBrowser("chrome").build()
+    const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
     
     await driver.get("https://www.saucedemo.com/");
     
+    // Login
     userName.clear();
-    await userName.sendKeys("locked_out_user")
+    await userName.sendKeys("locked_out_user");
     
-    await password.sendKeys("secret_sauce", Key.RETURN)
+    await password.sendKeys("secret_sauce", Key.RETURN);
 
-    // Input Username
-    
+    // get URL
     const promise = driver.getCurrentUrl().then(function(url){
         console.error("\x1B[31mUsername not accepted!")
         return url
-    })
+    });
  
-    const result = await promise
- 
+    const result = await promise;
+
+    // Actual vs Expected
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
  
-    await driver.quit()
-}
+    await driver.quit();
+};
 
 secondLogin();
