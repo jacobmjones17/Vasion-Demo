@@ -23,10 +23,10 @@ async function fourthLogin() {
  
      const result = await promise
  
-     // Expect current URL to be inventory page
-     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
+    // Expect current URL to be inventory page
+    assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
  
-     await driver.quit()
+    await driver.quit()
 }
 
 fourthLogin();

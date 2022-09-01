@@ -21,12 +21,16 @@ async function fourthLogin() {
         return url
     })
  
-     const result = await promise
+    const result = await promise
  
     // Expect current URL to be inventory page
-     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
+    assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
-    await driver.quit()
+    const img = driver.findElement(By.className("inventory_item_img"))
+    const src = await img.getAttribute("src");
+
+    console.log(src)
+    // assert.strictEqual(src, "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg")
 }
 
 fourthLogin();
