@@ -13,6 +13,7 @@ async function incorrectPage() {
     
     // enter username & password
     userName.clear();
+    password.clear();
     await userName.sendKeys("problem_user");
     
     await password.sendKeys("secret_sauce", Key.RETURN);

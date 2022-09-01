@@ -5,20 +5,18 @@ const assert = require("assert");
 
 async function unfinishedCheckOut() {
 
-    // First Login Test
+    // Expect to sign in
     const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
-
-
     await driver.get("https://www.saucedemo.com/");
 
-
     userName.clear();
+    password.clear();
+
     await userName.sendKeys("standard_user");
     await password.sendKeys("secret_sauce", Key.RETURN);
-
 
     const promise = driver.getCurrentUrl().then(function (url) {
         console.log("\x1B[32mCongratulations, you officially logged in!")
@@ -30,7 +28,7 @@ async function unfinishedCheckOut() {
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
 
-    // Navigation to item test
+    // Expect to take you to item
     await driver.findElement(By.id("item_4_img_link")).click();
 
 
@@ -46,12 +44,13 @@ async function unfinishedCheckOut() {
     await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
 
-    // Navigate Back and purchase the item
+    // Expect to navigate to shopping cart and checkout
 
     await driver.findElement(By.id("shopping_cart_container")).click();
 
     await driver.findElement(By.id("checkout")).click();
 
+    // Expect to fail due to all form items not filled out correctly.
     await driver.findElement(By.id("first-name")).sendKeys("Jacob");
     await driver.findElement(By.id("last-name")).sendKeys("Jones");
     await driver.findElement(By.id("continue")).click();

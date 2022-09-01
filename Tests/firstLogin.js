@@ -1,11 +1,11 @@
-/* This test is passing in every way. It logs in with the first username (standard_user) and the password. It expects it to login and go to the inventory page. It tests that the user can click on an item and add it to cart. Then it goes back and adds a new item to the cart from the inventory page. Then it goes to the cart, checksout, fills out their information, and purchases the items. */
+/* This test is passing in every way. It logs in with the first username (standard_user) and the password. It expects it to login and go to the inventory page. It tests that the user can click on an item and add it to cart. Then it goes back and adds a new item to the cart from the inventory page. Then it goes to the cart, checks out, fills out their information, and purchases the items. */
 
 const { Builder, By, Key } = require("selenium-webdriver");
 const assert = require("assert");
 
 async function firstLogin() {
 
-    // First Login Test
+    // First Username Login Test - Expect to Sign in
     const driver = await new Builder().forBrowser("chrome").build()
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
@@ -16,6 +16,8 @@ async function firstLogin() {
 
 
     userName.clear();
+    password.clear();
+
     await userName.sendKeys("standard_user")
     await password.sendKeys("secret_sauce", Key.RETURN)
 
@@ -29,7 +31,7 @@ async function firstLogin() {
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
 
 
-    // Navigation to item test
+    // Navigation to item test -  Expect to view item
     await driver.findElement(By.id("item_4_img_link")).click();
 
 
@@ -45,7 +47,7 @@ async function firstLogin() {
     await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
 
-    // Navigate Back, add new item and purchase the items
+    // Navigate Back, add new item and purchase the items - Expect to purchase items
     await driver.navigate().back();
 
     await driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
@@ -59,6 +61,15 @@ async function firstLogin() {
     await driver.findElement(By.id("postal-code")).sendKeys("28525");
     await driver.findElement(By.id("continue")).click();
     await driver.findElement(By.id("finish")).click();
+
+    const finishedCheckOutUrl = driver.getCurrentUrl().then(function(url) {
+        console.log("\x1B[32mYour item(s) are on the way")
+        return url
+    })
+
+    const checkOutResult = await finishedCheckOutUrl
+
+    assert.strictEqual(checkOutResult, "https://www.saucedemo.com/checkout-complete.html")
 
 
     await driver.quit()

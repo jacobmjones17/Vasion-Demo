@@ -4,6 +4,8 @@ const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
 async function secondLogin() {
+
+    // Second Username Login Test - Expect to fail because user is locked out
     const driver = await new Builder().forBrowser("chrome").build();
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
@@ -11,13 +13,13 @@ async function secondLogin() {
     
     await driver.get("https://www.saucedemo.com/");
     
-    // Login
     userName.clear();
+    password.clear();
+
     await userName.sendKeys("locked_out_user");
-    
     await password.sendKeys("secret_sauce", Key.RETURN);
 
-    // get URL
+    
     const promise = driver.getCurrentUrl().then(function(url){
         console.error("\x1B[31mUsername not accepted!")
         return url
