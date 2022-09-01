@@ -1,3 +1,5 @@
+/* This test barely passes. It passes in the sense that it will log the user in. However, its expected that the login is immediate, but rather it takes 5 seconds. */
+
 const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 

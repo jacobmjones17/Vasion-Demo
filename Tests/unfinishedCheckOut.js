@@ -1,3 +1,5 @@
+/* This test is expected to fail at the end. It signs in, looks at an item, adds it to the cart, and then checks out. The user does not fill out the zipcode of the payment information, which causes the test to fail. */
+
 const { Builder, By, Key } = require("selenium-webdriver");
 const assert = require("assert");
 
@@ -52,11 +54,19 @@ async function unfinishedCheckOut() {
     await driver.findElement(By.id("first-name")).sendKeys("Jacob");
     await driver.findElement(By.id("last-name")).sendKeys("Jones");
     await driver.findElement(By.id("continue")).click();
-    await driver.findElement(By.id("finish")).click();
+
+    const checkoutUrl = driver.getCurrentUrl().then(function (url) {
+        console.warn("\x1B[31mError! Form is missing information.")
+        return url
+    })
+
+    const checkoutResult = await checkoutUrl
+
+    assert.strictEqual(checkoutResult, "https://www.saucedemo.com/checkout-step-two.html")
 
 
     // Exit Page
-    await driver.quit()
+    // await driver.quit()
 }
 
 unfinishedCheckOut()
