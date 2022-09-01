@@ -1,7 +1,9 @@
+/* This test is expected to fail at the end. The first half of the test passes by logging in the user. The user is expecting to see the images of each item, but rather he/she sees images of a dog. It tested the first item's image, which failed.*/
+
 const {Builder, By, Key} = require ("selenium-webdriver");
 const assert = require ("assert");
 
-async function fourthLogin() {
+async function thirdLogin() {
     const driver = await new Builder().forBrowser("chrome").build()
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
@@ -26,11 +28,11 @@ async function fourthLogin() {
     // Expect current URL to be inventory page
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html");
 
-    const img = driver.findElement(By.className("inventory_item_img"))
+    const img = driver.findElement(By.xpath("//*[@id='item_4_img_link']/img"))
     const src = await img.getAttribute("src");
 
     console.log(src)
-    // assert.strictEqual(src, "/static/media/sauce-backpack-1200x1500.34e7aa42.jpg")
+    assert.strictEqual(src, "https://www.saucedemo.com/static/media/sauce-backpack-1200x1500.34e7aa42.jpg")
 }
 
-fourthLogin();
+thirdLogin();

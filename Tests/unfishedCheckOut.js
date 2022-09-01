@@ -1,9 +1,7 @@
-/* This test is passing in every way. It logs in with the first username (standard_user) and the password. It expects it to login and go to the inventory page. It tests that the user can click on an item and add it to cart. Then it goes back and adds a new item to the cart from the inventory page. Then it goes to the cart, checksout, fills out their information, and purchases the items. */
-
 const { Builder, By, Key } = require("selenium-webdriver");
 const assert = require("assert");
 
-async function firstLogin() {
+async function unfinishedCheckOut() {
 
     // First Login Test
     const driver = await new Builder().forBrowser("chrome").build()
@@ -45,10 +43,7 @@ async function firstLogin() {
     await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
 
-    // Navigate Back, add new item and purchase the items
-    await driver.navigate().back();
-
-    await driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
+    // Navigate Back and purchase the item
 
     await driver.findElement(By.id("shopping_cart_container")).click();
 
@@ -56,7 +51,6 @@ async function firstLogin() {
 
     await driver.findElement(By.id("first-name")).sendKeys("Jacob");
     await driver.findElement(By.id("last-name")).sendKeys("Jones");
-    await driver.findElement(By.id("postal-code")).sendKeys("28525");
     await driver.findElement(By.id("continue")).click();
     await driver.findElement(By.id("finish")).click();
 
@@ -65,4 +59,4 @@ async function firstLogin() {
     await driver.quit()
 }
 
-firstLogin()
+unfinishedCheckOut()
