@@ -10,6 +10,8 @@ async function fourthLogin() {
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
+    await driver.manage().window().maximize()
+
 
     await driver.get("https://www.saucedemo.com/");
     

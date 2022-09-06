@@ -1,6 +1,6 @@
 /* This test is expected to pass. The user logins in, and tries to learn more about the owner of the company by clicking on the hamburger at the top left, then click on the about page. Test is supposed to take them to their main website, but it says "PAGE NOT FOUND" */
 
-/* I did not have the resources to learn how to tell selenium make a hidden item, unhidden so that it can click on it. */
+/* I did not have the resources to learn how to tell selenium to make a hidden item unhidden so that it can click on it. */
 
 
 // const {Builder, By, Key} = require ("selenium-webdriver");
@@ -13,13 +13,16 @@
 //     const userName = driver.findElement(By.id("user-name"));
 //     const password = driver.findElement(By.id("password"));
 
+//     driver.manage().window().maximize()
+
 //     // open Saucedemo.com
 //     await driver.get("https://www.saucedemo.com/");
     
 //     // enter username & password
 //     userName.clear();
+//     password.clear();
+
 //     await userName.sendKeys("problem_user");
-    
 //     await password.sendKeys("secret_sauce", Key.RETURN);
 
 //     await driver.findElement(By.id("react-burger-menu-btn")).click();
