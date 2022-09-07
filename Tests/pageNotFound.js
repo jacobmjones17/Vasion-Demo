@@ -3,44 +3,44 @@
 /* I did not have the resources to learn how to tell selenium to make a hidden item unhidden so that it can click on it. */
 
 
-// const {Builder, By, Key} = require ("selenium-webdriver");
-// const assert = require ("assert");
+const {Builder, By, Key} = require ("selenium-webdriver");
+const assert = require ("assert");
 
-// async function pageNotFound() {
+async function pageNotFound() {
 
-//     // Navigation Test - Expect to pass but it fails
-//     const driver = await new Builder().forBrowser("chrome").build();
-//     const userName = driver.findElement(By.id("user-name"));
-//     const password = driver.findElement(By.id("password"));
+    // Navigation Test - Expect to pass but it fails
+    const driver = await new Builder().forBrowser("chrome").build();
+    const userName = driver.findElement(By.id("user-name"));
+    const password = driver.findElement(By.id("password"));
 
-//     driver.manage().window().maximize()
+    driver.manage().window().maximize()
 
-//     // open Saucedemo.com
-//     await driver.get("https://www.saucedemo.com/");
+    // open Saucedemo.com
+    await driver.get("https://www.saucedemo.com/");
     
-//     // enter username & password
-//     userName.clear();
-//     password.clear();
+    // enter username & password
+    userName.clear();
+    password.clear();
 
-//     await userName.sendKeys("problem_user");
-//     await password.sendKeys("secret_sauce", Key.RETURN);
+    await userName.sendKeys("problem_user");
+    await password.sendKeys("secret_sauce", Key.RETURN);
 
-//     await driver.findElement(By.id("react-burger-menu-btn")).click();
+    await driver.findElement(By.id("react-burger-menu-btn")).click();
 
-//     await driver.findElement(By.id("about_sidebar_link")).click();
+    await driver.findElement(By.id("about_sidebar_link")).click();
 
-//     const promise = driver.getCurrentUrl().then(function(url){
-//         console.log("\x1B[31mPage not found!!??")
-//         return url
-//     });
+    const promise = driver.getCurrentUrl().then(function(url){
+        console.log("\x1B[31mPage not found!!??")
+        return url
+    });
 
-//     console.log(promise)
-//     const result = await promise;
+    console.log(promise)
+    const result = await promise;
  
-//     assert.strictEqual(result, "https://saucelabs.com/");
+    assert.strictEqual(result, "https://saucelabs.com/");
 
-//     await driver.quit()
+    await driver.quit()
 
-// };
+};
 
-// pageNotFound();
+pageNotFound();
