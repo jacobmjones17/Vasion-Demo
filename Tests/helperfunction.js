@@ -1,5 +1,9 @@
-export async function standardUserLogin () {
-    const driver = await new Builder().forBrowser("chrome").build()
+const { Builder, By, Key } = require("selenium-webdriver");
+const assert = require("assert");
+const driver = new Builder().forBrowser("chrome").build()
+
+async function standardUserLogin () {
+    
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
@@ -13,3 +17,5 @@ export async function standardUserLogin () {
     await userName.sendKeys("standard_user")
     await password.sendKeys("secret_sauce", Key.RETURN)
 }
+
+module.exports = { standardUserLogin, driver:driver }

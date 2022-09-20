@@ -2,11 +2,12 @@
 
 const { Builder, By, Key } = require("selenium-webdriver");
 const assert = require("assert");
+const helperFunction = require("./helperFunction.js");
 
 async function standardUserLogin() {
 
-    // First Username Login Test - Expect to Sign in
-    const driver = await new Builder().forBrowser("chrome").build()
+    // State Setup
+    const driver = helperFunction.driver
     const userName = driver.findElement(By.id("user-name"));
     const password = driver.findElement(By.id("password"));
 
@@ -17,6 +18,7 @@ async function standardUserLogin() {
     userName.clear();
     password.clear();
 
+    // Test
     await userName.sendKeys("standard_user")
     await password.sendKeys("secret_sauce", Key.RETURN)
 

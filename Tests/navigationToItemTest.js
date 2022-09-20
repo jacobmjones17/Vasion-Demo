@@ -1,4 +1,14 @@
+const { Builder, By, Key } = require("selenium-webdriver");
+const assert = require("assert");
+
+const helperFunction = require("./helperFunction.js");
+
 async function navigationToItemTest() {
+    // State Setup
+    await helperFunction.standardUserLogin()
+    const driver = helperFunction.driver
+
+    // Begin Test
     await driver.findElement(By.id("item_4_img_link")).click();
 
 

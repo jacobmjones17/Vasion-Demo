@@ -1,15 +1,20 @@
-import { helperFunction } from "./helperfunction.js"
+const { Builder, By, Key } = require("selenium-webdriver");
+const assert = require("assert");
+
+const helperFunction = require("./helperFunction.js");
+const checkoutPage = require("../Pages/checkout.js");
 
 async function shoppingCartTest() {
-    helperFunction()
+    await helperFunction.standardUserLogin()
+    const driver = helperFunction.driver
 
     await driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
 
     await driver.findElement(By.id("shopping_cart_container")).click();
 
-    await driver.findElement(By.id("checkout")).click();
+    await checkoutPage.navigate()
 
-    await driver.findElement(By.id("first-name")).sendKeys("Jacob");
+    await checkoutPage.firstName.sendKeys("Jacob");
     await driver.findElement(By.id("last-name")).sendKeys("Jones");
     await driver.findElement(By.id("postal-code")).sendKeys("28525");
     await driver.findElement(By.id("continue")).click();
