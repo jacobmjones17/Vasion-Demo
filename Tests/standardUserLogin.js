@@ -3,7 +3,7 @@
 const { Builder, By, Key } = require("selenium-webdriver");
 const assert = require("assert");
 
-async function firstLogin() {
+async function standardUserLogin() {
 
     // First Username Login Test - Expect to Sign in
     const driver = await new Builder().forBrowser("chrome").build()
@@ -29,49 +29,7 @@ async function firstLogin() {
 
     assert.strictEqual(result, "https://www.saucedemo.com/inventory.html")
 
-
-    // Navigation to item test -  Expect to view item
-    await driver.findElement(By.id("item_4_img_link")).click();
-
-
-    const currentUrl = driver.getCurrentUrl().then(function (url) {
-        console.log("\x1B[32mThis is the item you clicked on!")
-        return url
-    })
-
-    const pageResult = await currentUrl
-
-    assert.strictEqual(pageResult, "https://www.saucedemo.com/inventory-item.html?id=4")
-
-    await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
-
-
-    // Navigate Back, add new item and purchase the items - Expect to purchase items
-    await driver.navigate().back();
-
-    await driver.findElement(By.id("add-to-cart-sauce-labs-bike-light")).click()
-
-    await driver.findElement(By.id("shopping_cart_container")).click();
-
-    await driver.findElement(By.id("checkout")).click();
-
-    await driver.findElement(By.id("first-name")).sendKeys("Jacob");
-    await driver.findElement(By.id("last-name")).sendKeys("Jones");
-    await driver.findElement(By.id("postal-code")).sendKeys("28525");
-    await driver.findElement(By.id("continue")).click();
-    await driver.findElement(By.id("finish")).click();
-
-    const finishedCheckOutUrl = driver.getCurrentUrl().then(function(url) {
-        console.log("\x1B[32mYour item(s) are on the way")
-        return url
-    })
-
-    const checkOutResult = await finishedCheckOutUrl
-
-    assert.strictEqual(checkOutResult, "https://www.saucedemo.com/checkout-complete.html")
-
-
     await driver.quit()
 }
 
-firstLogin()
+standardUserLogin()
