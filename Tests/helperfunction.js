@@ -1,5 +1,4 @@
 const { Builder, By, Key } = require("selenium-webdriver");
-const assert = require("assert");
 const driver = new Builder().forBrowser("chrome").build()
 
 async function standardUserLogin () {
